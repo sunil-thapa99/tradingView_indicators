@@ -1,0 +1,10 @@
+//@version=6
+indicator(title="Moving Average Exponential", shorttitle="EMA", overlay=true, timeframe="", timeframe_gaps=true)
+len_20 = input.int(20, minval=1, title="Length")
+len_200 = input.int(200, minval=1, title="Length")
+src = input(close, title="Source")
+offset = input.int(title="Offset", defval=0, minval=-500, maxval=500, display = display.data_window)
+out_20 = ta.ema(src, len_20)
+out_200 = ta.ema(src, len_200)
+plot(out_20, title="EMA 20", color=color.red, offset=offset)
+plot(out_200, title="EMA 200", color=color.green, offset=offset)
